@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create a new Event</h1>
+
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.event_name.label }}<br>
+        {{ form.event_name(size=32) }}<br>
+        {% for error in form.event_name.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.category.label }}<br>
+        {{ form.category() }} <br>
+        {% for error in form.category.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.ticket_price.label }}<br>
+        {{ form.ticket_price(size=32) }} <br>
+        {% for error in form.ticket_price.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.date.label }}<br>
+        {{ form.date(size=32) }} <br>
+        {% for error in form.date.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.room_id.label }}<br>
+        {{ form.room_id() }} <br>
+        {% for error in form.room_id.errors %}
+        <span style="color: red;">[{{error}}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

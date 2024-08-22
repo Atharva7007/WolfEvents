@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - EMS</title>
+        {% else %}
+        <title>Welcome to WolfEvents</title>
+        {% endif %}
+    </head>
+
+    <body>
+        <div>
+            WolfEvents: |
+            <a href="{{ url_for('index') }}">Home</a> | 
+            <a href="{{ url_for('create_room') }}">Create New Room</a> |
+            <a href="{{ url_for('create_event') }}">Create New Event</a> |
+            <a href="{{ url_for('list_events') }}">View Events</a> |
+            <a href="{{ url_for('list_rooms') }}">View Rooms</a> |
+            <a href="{{ url_for('list_attendees') }}">View Attendees</a> |
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" >Login</a> |
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a> |
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li> {{ message }}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

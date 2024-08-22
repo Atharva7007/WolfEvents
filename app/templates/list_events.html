@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Event ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Room</th>
+            <th>Seats Left</th>
+            <th>Ticket Price</th>
+            <th>Date</th>
+        </tr>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.id }}</td>
+            <td>{{event.name}}</td>
+            <td>{{event.category}}</td>
+            <td>{{event.room.address}}</td>
+            <td> {{event.number_seats_left}} </td>
+            <td>{{event.ticket_price}}</td>
+            <td>{{event.date}}</td>
+            <td>
+                <!-- Form to delete the room -->
+                <form action="{{ url_for('book_ticket', event_id=event.id) }}" method="post">
+                  <input type="submit" value="Book Ticket">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

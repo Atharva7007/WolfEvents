@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+        </tr>
+        {% for attendee in attendees %}
+        <tr>
+            <td>{{attendee.name}}</td>
+            <td>{{attendee.email}}</td>
+            <td>{{attendee.phone_number}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
